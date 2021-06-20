@@ -35,7 +35,7 @@ ASEkit test
 
 #### ASEkit Function
 ##### aseCalling: 
-**Call ASE site from RNAseq and vcf file.** RNA reads mapping with allelic mapping bias correction using STAR[2] WASP module[3] in two-pass mode. SNP-level allelic count file is generated using phASER v.3.22.0[4] that have been intergated into this package.
+**Call ASE sites from RNAseq and genotype data.** RNA reads mapping with allelic mapping bias correction using STAR WASP module[2][3] in two-pass mode. SNP-level allelic count file is generated using phASER v.3.22.0[4] that have been intergated into this package.
 
 
 
@@ -51,7 +51,7 @@ ASEkit Calling \
 ```
 --sample: sample information file including matching RNAid and DNAid
 --rnaseq: directory that store all RNA fastq files
---vcf: directory that store every sample vcf files
+--vcf: directory that store all  vcf files
 --index: reference genome index produced by STAR
 --process: Number of parallel processes
 --outdir: output directory
@@ -59,7 +59,7 @@ ASEkit Calling \
 --STAR: STAR software filepath. If you con not install STAR successfully, specify the software filepath.
 ```
 #### aseFilter:
-**Filter sample allelic expression file.** You can get there files: population.ase.txt, population.ase.AI.txt ase.site.merge.txt, meaning allelic imblance, AI value of population level file and exonic SNP sites merge file.
+**Filter ASE sites.** The module produces files: population.ase.txt, population.ase.AI.txt ase.site.merge.txt, meaning allelic imblance, AI value of population level file and exonic SNP sites merge file.
 ```
 ASEkit Filter --rawdir ./example.data/ \
    --totalreads 10 --fdr 0.05 --AIvalue 0.2 \
@@ -77,7 +77,7 @@ ASEkit Filter --rawdir ./example.data/ \
 ```
 #### aseQTL : 
 
-**Detect aseQTL sit.** Find whether allelic imbalance value at the exonic locus of individuals that heterozygous at the candidate regulatory is siginificantly higher than homozygous individuals.
+**Detect aseQTL sites.** Find whether allelic imbalance value at the exonic locus of individuals that heterozygous at the candidate regulatory is siginificantly higher than homozygous individuals.
 ```
 ASEkit aseQTL --ase population.ase.test.txt \
         --vcf vcf_filepath.txt \
@@ -107,8 +107,12 @@ ASEkit aseTrait --ase population.ase.test.txt \
 --outdir: output directory
 ```
 #### Reference:
-**1.** Przytycki PF, Singh M. Differential Allele-Specific Expression Uncovers Breast Cancer Genes     Dysregulated by Cis Noncoding Mutations. Cell Syst. 2020 Feb 26;10(2):193-203.e4. doi: 10.1016/j.cels.2020.01.002. Epub 2020 Feb 19. PMID: 32078798; PMCID: PMC7457951.Dobin A, Davis CA, Schlesinger F, et al. 
+**1.** Przytycki PF, Singh M. Differential Allele-Specific Expression Uncovers Breast Cancer Genes Dysregulated by Cis Noncoding Mutations. Cell Syst. 2020 Feb 26;10(2):193-203.e4. doi: 10.1016/j.cels.2020.01.002. Epub 2020 Feb 19. PMID: 32078798; PMCID: PMC7457951.Dobin A, Davis CA, Schlesinger F, et al. 
+
 **2.** STAR: ultrafast universal RNA-seq aligner. Bioinformatics. 2013;29(1):15-21. doi:10.1093/bioinformatics/bts635van de Geijn B, McVicker G, Gilad Y, Pritchard JK. 
+
 **3.** WASP: allele-specific software for robust molecular quantitative trait locus discovery. Nat Methods. 2015;12(11):1061-1063. doi:10.1038/nmeth.3582Castel, S., Mohammadi, P., Chung, W. et al. 
+
 **4.** Rare variant phasing and haplotypic expression from RNA sequencing with phASER. Nat Commun 7, 12817 (2016). https://doi.org/10.1038/ncomms12817Knowles DA, Davis JR, Edgington H, et al. 
+
 **5.** Allele-specific expression reveals interactions between genetic variation and environment. Nat Methods. 2017;14(7):699-702. doi:10.1038/nmeth.4298
